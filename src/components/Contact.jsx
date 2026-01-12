@@ -8,6 +8,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { useRef, useState } from "react";
+import resume from "../assets/RoshinthSojan.pdf";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -73,7 +74,7 @@ export default function Contact() {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <a
-                href="/resume.pdf"
+                href={resume}
                 download
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg"
               >

@@ -1,16 +1,168 @@
-# React + Vite
+# 🌐 Roshinth Sojan – Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, animation-rich personal portfolio showcasing my work as a **Full Stack Java Developer** with strong focus on **frontend engineering, UI motion, and performance-driven design**.
 
-Currently, two official plugins are available:
+Built using **React, Vite, Tailwind CSS, Framer Motion**, and **Firebase**, and deployed on **Vercel**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔗 **Live Website:** https://roshinth-sojan-portfolio.vercel.app/  
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ⚡ Lightning-fast Vite build
+- 🎨 Modern dark UI with glassmorphism
+- 🧩 Interactive project previews (modal iframe)
+- 🎞️ Smooth animations using Framer Motion
+- 🧭 Scroll-based navigation
+- 💬 Feedback & reviews system (Firebase)
+- ⭐ Star ratings & likes (client-side limited)
+- 📱 Fully responsive (desktop-first, mobile-optimized)
+- 🔐 Secure environment variables
+- 🚀 Auto-deploy on GitHub push (Vercel)
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- **React**
+- **Vite**
+- **Tailwind CSS**
+- **Framer Motion**
+- **Lucide Icons**
+
+### Backend / Services
+- **Firebase (Firestore)**
+- **Firebase Hosting (optional)**
+
+### DevOps & Hosting
+- **Vercel**
+- **GitHub**
+
+---
+
+## 📁 Project Structure
+
+├── public/
+├── src/
+│ ├── assets/
+│ ├── components/
+│ │ ├── Navbar.jsx
+│ │ ├── Hero.jsx
+│ │ ├── About.jsx
+│ │ ├── Certificates.jsx
+│ │ ├── Projects.jsx
+│ │ ├── Comments.jsx
+│ │ ├── Contact.jsx
+│ │ └── Footer.jsx
+│ ├── firebase.js
+│ ├── App.jsx
+│ └── main.jsx
+├── .env.example
+├── .gitignore
+├── index.html
+├── package.json
+├── tailwind.config.js
+├── vite.config.js
+└── README.md
+
+
+---
+
+## 🔐 Environment Variables
+
+This project uses **Vite environment variables** for Firebase.
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+
+Installation & Local Setup
+1️⃣ Clone the repository
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+
+2️⃣ Install dependencies
+npm install
+
+3️⃣ Run locally
+npm run dev
+
+Link shows-Open
+
+🏗 Build for Production
+npm run build
+
+Preview build:
+
+npm run preview
+
+----------------------------------------------------------------------
+
+Design Philosophy
+
+“I don’t just build interfaces — I craft experiences.”
+
+This portfolio focuses on:
+
+Motion as feedback
+
+Clear visual hierarchy
+
+Performance-first UI
+
+Developer-centric structure
+
+Recruiter-friendly exploration
+
+📌 Future Enhancements:
+
+🌍 Custom domain
+
+🧪 Lighthouse optimization
+
+🧠 AI-powered features
+
+📊 Analytics dashboard
+
+🌙 Theme toggles
+
+🤝 Contact:
+
+Roshinth Sojan
+📧 Email: roshinthr2004@gmail.com
+
+🔗 LinkedIn: https://www.linkedin.com/in/roshinth-sojan-846880264/
+
+🐙 GitHub: https://github.com/Rosi8870/
+----------------------------------------------------------------------
+
+
+
+⭐ If you like this project
+
+Give it a ⭐ on GitHub — it helps a lot!
+
+© 2026 Roshinth Sojan. All rights reserved.
+
+
+---
+
+If you want, I can also:
+- 🔧 Create `.env.example`
+- 🧹 Clean `.gitignore`
+- 📝 Optimize README for **recruiters**
+- 🌐 Add badges (Vercel, React, Firebase)
+- 🎯 Customize tone (corporate / creative / startup)
+
+Just tell me 👍
