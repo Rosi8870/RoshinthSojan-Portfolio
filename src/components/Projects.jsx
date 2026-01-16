@@ -4,14 +4,16 @@ import { X, ArrowUpRight, ExternalLink, Command, Globe, Maximize2, Loader2 } fro
 
 /* ================= DATA ================= */
 const projects = [
-  { title: "Interactive Jobs", tech: "React / Motion", link: "https://interactive-jobs.vercel.app/", desc: "A motion-first discovery platform with immersive UI transitions." },
-  { title: "Alternate Life", tech: "Creative UI", link: "https://alternate-life-engine.vercel.app/", desc: "A choice-driven interactive storytelling engine." },
+  { title: "Interactive Jobs", tech: "Jobs Platform", link: "https://interactive-jobs.vercel.app/", desc: "Useful job discovery platform for Freshers & All-Rounders" },
+  { title: "Alternate Life", tech: "Living Life in another Country", link: "https://alternate-life-engine.vercel.app/", desc: "A choice-driven interactive storytelling engine." },
   { title: "Alt Text Gen", tech: "AI / Accessibility", link: "https://alttextgenerator.vercel.app/", desc: "Generating accessibility descriptions using neural networks." },
-  { title: "Live TV UI", tech: "React / OTT", link: "https://livtv-six.vercel.app/", desc: "Streaming interface inspired by modern digital TV platforms." },
-  { title: "Particles", tech: "JS / Canvas", link: "https://rosi8870.github.io/Particles/", desc: "Interactive math-based particle physics playground." },
-  { title: "OTM", tech: "HTML / CSS", link: "https://rosi8870.github.io/OTM/", desc: "Creative UI experiments with dynamic CSS layouts." },
-  { title: "Electrical", tech: "Business", link: "https://rosi8870.github.io/Roshinth-Electrical-Works/", desc: "Corporate showcase for electrical engineering services." },
-  { title: "STOT", tech: "Static Arch", link: "https://rosi8870.github.io/STOT-by-sojan/", desc: "Clean and performant static website architecture." },
+  { title: "Live TV", tech: "All Live Channels", link: "https://livtv-six.vercel.app/", desc: "Streaming interface inspired by modern digital TV platforms." },
+  { title: "Particles", tech: "Hand Gestures", link: "https://rosi8870.github.io/Particles/", desc: "Interactive math-based particle physics playground through hand gestures." },
+  { title: "OTM", tech: "On Time Music", link: "https://rosi8870.github.io/OTM/", desc: "Generates Music or Rhythms Based on User Tone.(Under Development)" },
+  { title: "REW", tech: "Roshinth Electrical Works", link: "https://rosi8870.github.io/Roshinth-Electrical-Works/", desc: "Corporate showcase for electrical engineering services." },
+  { title: "STOT", tech: "Speech To Text", link: "https://rosi8870.github.io/STOT-by-sojan/", desc: "Coverts Speech To Text Fluently." },
+  { title: "E Commerce", tech: "Online Store", link: "https://ecomn.vercel.app/", desc: "E commerce platform with modern UI with all functionality." },
+  { title: "Sojan's BillPro", tech: "Billing Website", link: "https://billing-one-virid.vercel.app/", desc: "Corporate billing solution for all." },
 ];
 
 export default function DarkOrbitShowcase() {

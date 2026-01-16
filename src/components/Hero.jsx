@@ -64,9 +64,10 @@ export default function Hero() {
   const [role] = useTypewriter({
     words: [
       "React Developer",
-      "Frontend Engineer",
-      "UI Animation Specialist",
-      "Creative Web Builder",
+      "Full-Stack Engineer",
+      "UI/UX Enthusiast",
+      "Node.js Specialist",
+      "Freelancer",
     ],
     loop: true,
     delaySpeed: 1800,
@@ -121,8 +122,7 @@ export default function Hero() {
 
         {/* Description */}
         <p className="mx-auto mt-8 max-w-3xl text-white/70 leading-relaxed">
-          I create modern, animation-rich, high-performance web interfaces using
-          React, Tailwind CSS, and thoughtful motion design.
+          React.js, Tailwind CSS, Motion Design, UI/UX, Performance Optimization, Java, Spring Boot, Full Stack Development, JavaScript, Web Development.
         </p>
 
         {/* Actions */}

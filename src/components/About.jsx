@@ -150,7 +150,7 @@ export default function About() {
                   Roshinth Sojan
                 </p>
                 <p className="text-xs tracking-wide text-cyan-400">
-                  Frontend Engineer
+                  Full Stack Developer
                 </p>
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function About() {
               <p className="mb-6 text-white/70 leading-relaxed">
                 I’m{" "}
                 <span className="font-medium text-cyan-400">Roshinth</span>, a
-                frontend-focused developer passionate about building immersive,
+                Fullstack-focused developer passionate about building immersive,
                 animation-rich, and performance-driven web experiences.
               </p>
 
