@@ -1,185 +1,135 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { X, ArrowUpRight, ExternalLink, Command, Globe, Maximize2, Loader2 } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
-/* ================= DATA ================= */
 const projects = [
   { title: "Interactive Jobs", tech: "Jobs Platform", link: "https://interactive-jobs.vercel.app/", desc: "Useful job discovery platform for Freshers & All-Rounders" },
-  { title: "Alternate Life", tech: "Living Life in another Country", link: "https://alternate-life-engine.vercel.app/", desc: "A choice-driven interactive storytelling engine." },
+  { title: "Alternate Life", tech: "Interactive Story", link: "https://alternate-life-engine.vercel.app/", desc: "A choice-driven interactive storytelling engine." },
   { title: "Alt Text Gen", tech: "AI / Accessibility", link: "https://alttextgenerator.vercel.app/", desc: "Generating accessibility descriptions using neural networks." },
-  { title: "Live TV", tech: "All Live Channels", link: "https://livtv-six.vercel.app/", desc: "Streaming interface inspired by modern digital TV platforms." },
-  { title: "Particles", tech: "Hand Gestures", link: "https://rosi8870.github.io/Particles/", desc: "Interactive math-based particle physics playground through hand gestures." },
-  { title: "OTM", tech: "On Time Music", link: "https://rosi8870.github.io/OTM/", desc: "Generates Music or Rhythms Based on User Tone.(Under Development)" },
-  { title: "REW", tech: "Roshinth Electrical Works", link: "https://rosi8870.github.io/Roshinth-Electrical-Works/", desc: "Corporate showcase for electrical engineering services." },
+  { title: "Live TV", tech: "Streaming", link: "https://livtv-six.vercel.app/", desc: "Streaming interface inspired by modern digital TV platforms." },
+  { title: "Particles", tech: "WebGL Physics", link: "https://rosi8870.github.io/Particles/", desc: "Interactive math-based particle physics playground." },
+  { title: "OTM", tech: "Audio Generation", link: "https://rosi8870.github.io/OTM/", desc: "Generates Music or Rhythms Based on User Tone." },
+  { title: "REW", tech: "Corporate", link: "https://rosi8870.github.io/Roshinth-Electrical-Works/", desc: "Corporate showcase for electrical engineering services." },
   { title: "STOT", tech: "Speech To Text", link: "https://rosi8870.github.io/STOT-by-sojan/", desc: "Coverts Speech To Text Fluently." },
-  { title: "E Commerce", tech: "Online Store", link: "https://ecomn.vercel.app/", desc: "E commerce platform with modern UI with all functionality." },
-  { title: "Sojan's BillPro", tech: "Billing Website", link: "https://billing-one-virid.vercel.app/", desc: "Corporate billing solution for all." },
+  { title: "E Commerce", tech: "Online Store", link: "https://ecomn.vercel.app/", desc: "E commerce platform with modern UI." },
+  { title: "BillPro", tech: "Billing Web App", link: "https://billing-one-virid.vercel.app/", desc: "Corporate billing solution for all." },
 ];
 
-export default function DarkOrbitShowcase() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  // Lock scroll and reset loader when modal toggles
-  useEffect(() => {
-    if (showModal) {
-      document.body.style.overflow = "hidden";
-      setLoading(true); // Reset loading state for new iframe
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [showModal]);
+export default function Projects() {
+  const { theme } = useTheme();
 
   return (
-    <section id="projects"className="relative min-h-screen text-white py-24 px-6 overflow-hidden flex flex-col items-center">
-      <style>{`
-        @keyframes orbit {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .orbit-container { animation: orbit 50s linear infinite; }
-        .orbit-container:hover { animation-play-state: paused; }
-        .counter-rotate { animation: orbit 50s linear infinite reverse; }
-        .orbit-container:hover .counter-rotate { animation-play-state: paused; }
-      `}</style>
-
-      {/* --- CENTERED HEADER --- */}
-      <div className="container mx-auto text-center mb-20">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative z-50 inline-block"
-        >
-          <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-none">
-            Projects
-          </h2>
-          <div className="flex items-center justify-center gap-3 mt-4">
-            <span className="h-[1px] w-12 bg-white/20" />
-            <p className="text-[10px] font-mono tracking-[0.5em] text-white/40 uppercase">I HAVE DONE</p>
-            <span className="h-[1px] w-12 bg-white/20" />
-          </div>
-        </motion.div>
-      </div>
-
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="projects" className={`relative py-32 ${
+      theme === 'editorial' ? 'bg-[#f2efe9] text-[#111111] editorial-border border-x-0 border-b-0' 
+      : theme === 'zen' ? 'bg-transparent text-black border-t border-black/10'
+      : theme === 'neumorphic' ? 'bg-transparent text-[#31344b] border-t-0'
+      : theme === 'retro' ? 'bg-transparent text-black border-t-2 border-black font-mono'
+      : 'bg-transparent text-white border-t border-white/10'
+    }`}>
+      
+      <div className="container mx-auto px-6 max-w-7xl">
         
-        {/* --- LEFT: THE WHEEL --- */}
-        <div className="relative flex items-center justify-center aspect-square w-full max-w-[350px] md:max-w-[450px] mx-auto lg:mx-0">
-          <div className="orbit-container absolute inset-0 flex items-center justify-center">
-            {projects.map((p, i) => {
-              const angle = (i / projects.length) * 360;
-              return (
-                <div key={i} className="absolute" style={{ transform: `rotate(${angle}deg) translateY(clamp(-130px, -16vw, -190px)) rotate(-${angle}deg)` }}>
-                  <div className="counter-rotate">
-                    <motion.button
-                      onMouseEnter={() => setActiveIndex(i)}
-                      onClick={() => { setActiveIndex(i); setShowModal(true); }}
-                      className={`relative flex items-center justify-center h-10 w-10 md:h-14 md:w-14 rounded-full border-2 transition-all duration-500 ${
-                        activeIndex === i ? 'bg-cyan-500 border-white scale-110 z-50 shadow-[0_0_30px_rgba(6,182,212,0.4)]' : 'bg-zinc-900 border-white/10 opacity-30'
-                      }`}
-                    >
-                      <span className="text-[10px] font-bold">0{i + 1}</span>
-                    </motion.button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="relative z-40 p-6 bg-zinc-950/90 backdrop-blur-3xl rounded-full border border-white/10 w-36 h-36 md:w-56 md:h-56 flex flex-col justify-center items-center text-center shadow-2xl">
-             <Command className="text-cyan-500 mb-2 opacity-20" size={20} />
-             <AnimatePresence mode="wait">
-               <motion.h3 key={activeIndex} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-base md:text-lg font-black uppercase tracking-tighter">
-                 {projects[activeIndex].title}
-               </motion.h3>
-             </AnimatePresence>
+        {/* Header */}
+        <div className={`mb-20 flex flex-col md:flex-row md:items-end justify-between pb-10 ${
+          theme === 'editorial' || theme === 'zen' || theme === 'retro' ? 'border-b-2 border-[#111111]' 
+          : theme === 'neumorphic' ? '' 
+          : 'border-b border-white/20'
+        }`}>
+          <div>
+            <span className={`text-xs font-bold tracking-widest uppercase mb-4 block ${
+              theme === 'editorial' ? 'text-[#3b82f6]' 
+              : theme === 'zen' ? 'text-black/50'
+              : theme === 'neumorphic' ? 'text-[#8a96a3]'
+              : theme === 'retro' ? 'text-black bg-[#c0c0c0] inline-block px-2'
+              : 'text-blue-400'
+            }`}>Chapter 03</span>
+            <h2 className={`text-6xl sm:text-8xl lg:text-[10rem] font-black uppercase tracking-tighter leading-[0.85] m-0 ${
+              theme === 'editorial' || theme === 'zen' || theme === 'neumorphic' || theme === 'retro' ? '' : 'text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40'
+            }`}>
+              Projects
+            </h2>
           </div>
         </div>
 
-        {/* --- RIGHT: PROJECT INFO --- */}
-        <div className="text-center lg:text-left">
-          <AnimatePresence mode="wait">
-            <motion.div key={activeIndex} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-              <p className="text-cyan-500 font-mono text-xs tracking-widest uppercase mb-4">{projects[activeIndex].tech}</p>
-              <h4 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-none uppercase">{projects[activeIndex].title}</h4>
-              <p className="text-white/40 text-lg md:text-xl mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light italic">"{projects[activeIndex].desc}"</p>
-              
-              <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
-                <button 
-                  onClick={() => setShowModal(true)} 
-                  className="flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-black text-sm hover:bg-cyan-500 hover:text-white transition-all shadow-xl"
-                >
-                  PREVIEW PROJECT <Maximize2 size={16} />
-                </button>
-                <a 
-                  href={projects[activeIndex].link} 
-                  target="_blank" 
-                  className="flex items-center gap-2 text-white/30 hover:text-white transition-colors font-bold text-[10px] tracking-[0.2em] uppercase"
-                >
-                  Visit Site <ExternalLink size={14} />
-                </a>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-
-      {/* --- REFINED DARK PREVIEW MODAL --- */}
-      <AnimatePresence>
-        {showModal && (
-          <motion.div 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[999] flex items-center justify-center p-4 md:p-10"
-          >
-            {/* Dark Backdrop */}
-            <div className="absolute inset-0 bg-black/95 backdrop-blur-xl" onClick={() => setShowModal(false)} />
-            
-            <motion.div 
-              initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }}
-              className="relative w-full h-full max-w-6xl bg-black rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl flex flex-col"
+        {/* List Layout */}
+        <div className={theme === 'editorial' || theme === 'zen' || theme === 'retro' ? 'border-t-2 border-[#111111]' : theme === 'neumorphic' ? 'grid gap-6' : 'border-t border-white/20'}>
+          {projects.map((p, i) => (
+            <motion.a 
+              href={p.link}
+              target="_blank"
+              rel="noreferrer"
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className={`group py-8 px-4 flex flex-col md:flex-row md:items-center justify-between cursor-pointer transition-all duration-300 block ${
+                theme === 'editorial' 
+                  ? 'border-b-2 border-[#111111] hover:bg-[#ffcc00]' 
+                  : theme === 'zen'
+                  ? 'border-b border-black/10 hover:bg-black/5 hover:px-8 rounded-none'
+                  : theme === 'neumorphic'
+                  ? 'neu-flat hover:neu-pressed rounded-[2rem] px-8'
+                  : theme === 'retro'
+                  ? 'win95-window mb-4 px-6 hover:bg-[#000080] hover:text-white'
+                  : 'border-b border-white/10 hover:bg-white/5 hover:px-8 rounded-xl my-2'
+              }`}
             >
-              {/* Dark Browser Toolbar */}
-              <div className="h-14 bg-zinc-900/80 border-b border-white/5 flex items-center justify-between px-6 shrink-0 backdrop-blur-md">
-                <div className="flex items-center gap-4">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-white/10" />
-                    <div className="w-3 h-3 rounded-full bg-white/10" />
-                    <div className="w-3 h-3 rounded-full bg-white/10" />
-                  </div>
-                  <div className="hidden md:flex items-center gap-2 px-4 py-1.5 bg-black/40 rounded-full border border-white/5">
-                     <Globe size={12} className="text-cyan-500/50" />
-                     <span className="text-[10px] font-mono text-white/30 truncate max-w-[250px]">{projects[activeIndex].link}</span>
-                  </div>
-                </div>
+              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-16 w-full">
+                <span className={`text-sm font-bold uppercase transition-colors ${
+                  theme === 'editorial' ? 'text-[#111111]/30 group-hover:text-[#111111]' 
+                  : theme === 'zen' ? 'text-black/30 group-hover:text-black'
+                  : theme === 'neumorphic' ? 'text-[#8a96a3] group-hover:text-[#31344b]'
+                  : theme === 'retro' ? 'text-black group-hover:text-white'
+                  : 'text-white/30 group-hover:text-white/80'
+                }`}>
+                  {(i + 1).toString().padStart(2, '0')}
+                </span>
                 
-                <button 
-                  onClick={() => setShowModal(false)} 
-                  className="group h-8 w-8 flex items-center justify-center bg-white/5 hover:bg-red-500 rounded-full transition-all"
-                >
-                  <X size={16} className="text-white group-hover:scale-110 transition-transform" />
-                </button>
+                <h3 className={`text-4xl md:text-6xl uppercase tracking-tighter transition-colors ${
+                  theme === 'editorial' ? 'font-black group-hover:text-[#111111]' 
+                  : theme === 'zen' ? 'font-light group-hover:text-black'
+                  : theme === 'neumorphic' ? 'font-bold text-[#8a96a3] group-hover:text-[#31344b]'
+                  : theme === 'retro' ? 'font-bold text-black group-hover:text-white'
+                  : 'font-black text-white/80 group-hover:text-white'
+                }`}>
+                  {p.title}
+                </h3>
               </div>
+              
+              <div className="mt-6 md:mt-0 flex flex-col md:flex-row md:items-center gap-6 text-left md:text-right shrink-0">
+                <p className={`text-sm font-bold uppercase tracking-widest transition-colors px-3 py-1 ${
+                  theme === 'editorial' 
+                    ? 'text-[#3b82f6] group-hover:text-[#111111] bg-white/50 editorial-border' 
+                    : theme === 'zen'
+                    ? 'text-black/50 group-hover:text-black font-light border border-black/10'
+                    : theme === 'neumorphic'
+                    ? 'text-[#8a96a3] border border-transparent group-hover:text-[#31344b]'
+                    : theme === 'retro'
+                    ? 'bg-white text-black border-2 border-[#808080] border-r-white border-b-white px-2 py-1'
+                    : 'text-blue-400 bg-white/5 rounded-full border border-white/10'
+                }`}>
+                  {p.tech}
+                </p>
+                <div className={`hidden md:flex h-12 w-12 items-center justify-center transition-all ${
+                  theme === 'editorial'
+                    ? 'rounded-full editorial-border bg-white group-hover:bg-[#111111] group-hover:text-white editorial-shadow'
+                    : theme === 'zen'
+                    ? 'rounded-full border border-black/20 bg-transparent group-hover:bg-black group-hover:text-white'
+                    : theme === 'neumorphic'
+                    ? 'rounded-full neu-flat text-[#8a96a3] group-hover:neu-pressed group-hover:text-[#31344b]'
+                    : theme === 'retro'
+                    ? 'win95-button group-hover:win95-pressed'
+                    : 'rounded-full border border-white/20 bg-white/5 group-hover:bg-white group-hover:text-slate-900'
+                }`}>
+                  <ArrowRight className="h-5 w-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                </div>
+              </div>
+            </motion.a>
+          ))}
+        </div>
 
-              {/* Black Iframe Content */}
-              <div className="flex-grow relative bg-black">
-                {loading && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-black z-10">
-                    <Loader2 className="w-10 h-10 animate-spin text-cyan-500 mb-4 opacity-80" />
-                    <p className="text-[9px] font-black text-white/20 uppercase tracking-[0.4em]">Establishing Connection</p>
-                  </div>
-                )}
-                <iframe 
-                  src={projects[activeIndex].link} 
-                  className={`w-full h-full border-0 transition-opacity duration-700 ${loading ? 'opacity-0' : 'opacity-100'}`}
-                  onLoad={() => setLoading(false)}
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </div>
     </section>
   );
 }

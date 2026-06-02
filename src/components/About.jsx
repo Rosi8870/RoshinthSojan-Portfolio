@@ -1,353 +1,172 @@
 import { motion } from "framer-motion";
-import {
-  Code2,
-  Sparkles,
-  Layers,
-  Gauge,
-  Atom,
-  Palette,
-  GitBranch,
-  Zap,
-} from "lucide-react";
 import profileImg from "../assets/profile.jpg";
-
-/* ---------------- Animations ---------------- */
-const fadeUp = {
-  hidden: { opacity: 0, y: 50 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
+import { useTheme } from "../context/ThemeContext";
 
 export default function About() {
-  const focusCards = [
-    {
-      icon: Code2,
-      title: "Frontend Engineering",
-      desc: "Scalable React architecture, reusable components, responsive systems.",
-    },
-    {
-      icon: Sparkles,
-      title: "Motion & Interactions",
-      desc: "Framer Motion, micro-interactions, scroll-linked animations.",
-    },
-    {
-      icon: Palette,
-      title: "Visual Design",
-      desc: "Tailwind CSS, dark UI aesthetics, design consistency.",
-    },
-    {
-      icon: Gauge,
-      title: "Performance",
-      desc: "Optimized rendering, clean logic, smooth user experience.",
-    },
-  ];
-
-  const techStack = [
-    { name: "React", icon: Atom },
-    { name: "JavaScript", icon: Zap },
-    { name: "Tailwind CSS", icon: Layers },
-    { name: "Framer Motion", icon: Sparkles },
-    { name: "HTML5", icon: Code2 },
-    { name: "CSS3", icon: Palette },
-    { name: "Vite", icon: Zap },
-    { name: "Git", icon: GitBranch },
+  const { theme } = useTheme();
+  
+  const skills = [
+    "React", "Next.js", "TypeScript", "Tailwind", "Motion", 
+    "Java", "Spring", "Node.js", "Express", "PostgreSQL",
+    "MongoDB", "Firebase", "SQL", "Docker", "Git",
+    "WebGL", "Three.js", "Figma", "REST APIs", "GraphQL"
   ];
 
   return (
-    <section
-      id="about"
-      className="relative flex min-h-screen items-center overflow-hidden"
-    >
-      {/* Background glow */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[260px]" />
-      </div>
-
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="about" className={`relative py-32 overflow-hidden ${
+      theme === 'editorial' ? 'bg-[#f2efe9] text-[#111111] editorial-border border-x-0 border-b-0' 
+      : theme === 'zen' ? 'bg-transparent text-black border-t border-black/10'
+      : theme === 'neumorphic' ? 'bg-transparent text-[#31344b] border-t-0'
+      : theme === 'retro' ? 'bg-transparent text-black border-t border-black/20 font-mono'
+      : theme === 'cyber' ? 'bg-transparent text-[#00ff41] border-t border-[#00ff41]/30 font-mono'
+      : 'bg-transparent text-white border-t border-white/10'
+    }`}>
+      <div className="container mx-auto px-6 max-w-7xl">
+        
         {/* Header */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="mb-28 text-center"
-        >
-          <h2 className="text-3xl font-bold sm:text-5xl">
-            Who I am & what I do
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-white/60 leading-relaxed">
-            A focused look at my mindset, skills, and how I approach building
-            modern web interfaces.
-          </p>
-        </motion.div>
-
-        {/* MAIN GRID */}
-        <div className="grid gap-24 md:grid-cols-2 md:items-center">
-          {/* ================= ID CARD PHOTO ================= */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            whileHover={{ rotateY: -6, rotateX: 6 }}
-            transition={{ type: "spring", stiffness: 120, damping: 18 }}
-            className="relative mx-auto w-full max-w-[280px] perspective"
-          >
-            {/* Glow halo */}
-            <div className="absolute -inset-6 rounded-3xl bg-cyan-400/20 blur-3xl" />
-
-            {/* ID Card */}
-            <div className="group relative overflow-hidden rounded-3xl border border-white/15 bg-white/5 backdrop-blur-xl shadow-2xl">
-              {/* Shine sweep */}
-              <div className="
-                pointer-events-none absolute inset-0
-                translate-x-[-120%] skew-x-[-20deg]
-                bg-gradient-to-r from-transparent via-white/25 to-transparent
-                transition-transform duration-700
-                group-hover:translate-x-[120%]
-              " />
-
-              {/* Top bar */}
-              <div className="flex items-center justify-between border-b border-white/10 bg-black/40 px-4 py-2">
-                {/* ACTIVE LED */}
-                <div className="flex items-center gap-2">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                  </span>
-                  <span className="text-[10px] tracking-widest text-emerald-400">
-                    ACTIVE
-                  </span>
-                </div>
-
-                {/* Serial */}
-                <span className="text-[10px] font-mono tracking-widest text-white/60">
-                  DEV-07
-                </span>
-              </div>
-
-              {/* Image */}
-              <div className="relative h-[360px] overflow-hidden">
-                <img
-                  src={profileImg}
-                  alt="Roshinth ID"
-                  className="
-                    h-full w-full object-cover
-                    transition duration-700
-                    group-hover:scale-110
-                    group-hover:contrast-110
-                    group-hover:saturate-110
-                  "
-                />
-              </div>
-
-              {/* Info strip */}
-              <div className="border-t border-white/10 bg-black/40 px-5 py-4">
-                <p className="text-sm font-semibold text-white">
-                  Roshinth Sojan
-                </p>
-                <p className="text-xs tracking-wide text-cyan-400">
-                  Full Stack Developer
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* ================= TEXT + FOCUS ================= */}
+        <div className={`mb-20 flex flex-col md:flex-row md:items-end justify-between pb-10 ${
+          theme === 'editorial' || theme === 'zen' ? 'border-b-2 border-[#111111]' 
+          : theme === 'neumorphic' || theme === 'retro' ? '' 
+          : 'border-b border-white/20'
+        }`}>
           <div>
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-            >
-              <h3 className="mb-8 text-2xl font-semibold">
-                I craft experiences, not just interfaces
-              </h3>
+            <span className={`text-xs font-bold tracking-widest uppercase mb-4 block ${
+              theme === 'editorial' ? 'text-[#ff5733]' 
+              : theme === 'zen' ? 'text-black/50' 
+              : theme === 'neumorphic' ? 'text-[#8a96a3]'
+              : theme === 'retro' ? 'text-black bg-[#c0c0c0] inline-block px-2'
+              : theme === 'cyber' ? 'text-[#00ff41]'
+              : 'text-purple-400'
+            }`}>Chapter 01</span>
+            <h2 className={`text-6xl sm:text-8xl lg:text-[10rem] font-black uppercase tracking-tighter leading-[0.85] m-0 ${
+              theme === 'editorial' || theme === 'zen' || theme === 'neumorphic' || theme === 'retro' ? '' : 'text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40'
+            }`}>
+              About
+            </h2>
+          </div>
+          <p className="max-w-xs text-sm font-bold leading-relaxed mt-8 md:mt-0 md:text-right uppercase tracking-widest opacity-80">
+            Bridging the gap between code & creativity.
+          </p>
+        </div>
 
-              <p className="mb-6 text-white/70 leading-relaxed">
-                I’m{" "}
-                <span className="font-medium text-cyan-400">Roshinth</span>, a
-                Fullstack-focused developer passionate about building immersive,
-                animation-rich, and performance-driven web experiences.
-              </p>
-
-              <p className="text-white/70 leading-relaxed">
-                My work lives where design meets engineering — blending clean
-                architecture, motion, and usability into polished digital
-                products.
-              </p>
-            </motion.div>
-
-            {/* Focus cards */}
-            <div className="mt-14 grid gap-10 sm:grid-cols-2">
-              {focusCards.map((card, i) => {
-                const Icon = card.icon;
-                return (
-                  <motion.div
-                    key={i}
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.12 }}
-                    whileHover={{ y: -12 }}
-                    className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
-                  >
-                    <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-cyan-400 to-blue-500" />
-                    <div className="absolute inset-0 opacity-0 transition group-hover:opacity-100">
-                      <div className="absolute -inset-2 rounded-3xl bg-cyan-400/15 blur-2xl" />
-                    </div>
-
-                    <div className="relative">
-                      <Icon className="mb-5 h-8 w-8 text-cyan-400" />
-                      <h4 className="mb-3 text-lg font-semibold text-white">
-                        {card.title}
-                      </h4>
-                      <p className="text-sm leading-relaxed text-white/70">
-                        {card.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          
+          {/* Left: Image Treatment */}
+          <div className="lg:col-span-5 relative group">
+            <div className={`aspect-[3/4] p-4 relative transition-transform duration-500 ${
+              theme === 'editorial' ? 'editorial-border editorial-shadow bg-white' 
+              : theme === 'zen' ? 'bg-transparent border border-black/10'
+              : theme === 'neumorphic' ? 'neu-flat rounded-[2rem]'
+              : theme === 'retro' ? 'win95-window'
+              : 'bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl overflow-hidden'
+            }`}>
+               <div className={`w-full h-full overflow-hidden relative ${
+                 theme === 'editorial' ? 'border border-[#111111]/10 bg-[#e8e4db]' 
+                 : theme === 'retro' ? 'border-2 border-l-[#808080] border-t-[#808080] border-r-white border-b-white bg-[#008080]'
+                 : 'rounded-[1.5rem]'
+               }`}>
+                 <img
+                    src={profileImg}
+                    alt="Roshinth"
+                    className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${
+                      theme === 'editorial' || theme === 'zen' ? 'mix-blend-multiply grayscale contrast-125 group-hover:grayscale-0' 
+                      : theme === 'neumorphic' ? 'opacity-90 grayscale hover:grayscale-0'
+                      : theme === 'retro' ? 'mix-blend-luminosity grayscale opacity-80'
+                      : 'opacity-90'
+                    }`}
+                  />
+               </div>
+               
+               {/* Label */}
+               <div className={`absolute bottom-6 px-4 py-2 transition-all ${
+                 theme === 'editorial' ? 'right-[-20px] bg-[#ffcc00] editorial-border rotate-[-5deg] editorial-shadow group-hover:rotate-0' 
+                 : theme === 'zen' ? 'right-6 bg-white/80 backdrop-blur-md border border-black/10'
+                 : theme === 'neumorphic' ? 'right-6 neu-flat rounded-full'
+                 : theme === 'retro' ? 'right-6 win95-window p-2'
+                 : theme === 'cyber' ? 'right-6 bg-black/80 border border-[#00ff41]/50'
+                 : 'right-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl'
+               }`}>
+                 <p className={`font-serif italic font-bold text-xl ${theme === 'editorial' || theme === 'zen' || theme === 'neumorphic' || theme === 'retro' ? 'text-[#31344b]' : theme === 'cyber' ? 'text-[#00ff41] not-italic font-mono' : 'text-white'}`}>The Engineer</p>
+               </div>
             </div>
           </div>
+
+          {/* Right: Text & Details */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h3 className={`text-4xl sm:text-6xl font-black uppercase tracking-tighter mb-8 leading-[0.9] ${
+                theme === 'cyber' ? 'text-[#00ff41]' : ''
+              }`}>
+                I build digital <br/>
+                <span className={`font-serif italic font-normal lowercase tracking-normal ${
+                  theme === 'editorial' ? 'text-[#ff5733]' 
+                  : theme === 'zen' ? 'text-black/40 font-light'
+                  : theme === 'neumorphic' ? 'text-[#8a96a3]'
+                  : theme === 'retro' ? 'text-black bg-[#c0c0c0] px-2 not-italic'
+                  : theme === 'cyber' ? 'text-[#00ff41] not-italic'
+                  : 'text-purple-400'
+                }`}>experiences</span>
+              </h3>
+              
+              <div className={`space-y-6 text-lg leading-relaxed max-w-2xl ${
+                theme === 'editorial' ? 'font-medium' 
+                : theme === 'zen' ? 'text-black/70 font-light'
+                : theme === 'neumorphic' ? 'text-[#8a96a3] font-medium'
+                : theme === 'retro' ? 'text-black font-bold'
+                : theme === 'cyber' ? 'text-[#00ff41]/80 font-mono'
+                : 'text-white/70 font-light'
+              }`}>
+                <p>
+                  I'm Roshinth Sojan, a full-stack engineer and interface designer. 
+                  My philosophy is simple: technology should be invisible, leaving only the experience behind. 
+                  I specialize in crafting highly interactive, minimalist web applications that demand attention.
+                </p>
+                <p>
+                  By merging rigorous back-end architecture with fluid front-end motion, 
+                  I deliver products that aren't just usable—they are memorable.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Skills List */}
+            <div className={`mt-16 pt-8 ${theme === 'editorial' || theme === 'zen' || theme === 'retro' ? 'border-t-2 border-[#111111]' : theme === 'cyber' ? 'border-t border-[#00ff41]/30' : theme === 'neumorphic' ? '' : 'border-t border-white/20'}`}>
+              <h4 className={`text-xs font-bold tracking-[0.2em] uppercase mb-8 opacity-80 ${theme === 'retro' ? 'bg-[#000080] text-white p-2 inline-block' : theme === 'cyber' ? 'text-[#00ff41]' : ''}`}>Core Capabilities</h4>
+              <div className="flex flex-wrap gap-4">
+                {skills.map((skill, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className={`px-4 py-2 text-xs font-bold uppercase tracking-widest cursor-default transition-all ${
+                      theme === 'editorial' 
+                        ? 'editorial-border hover:bg-[#3b82f6] hover:text-white' 
+                        : theme === 'zen'
+                        ? 'border border-black/10 rounded-none text-black/70 hover:bg-black hover:text-white font-light'
+                        : theme === 'neumorphic'
+                        ? 'neu-flat rounded-full text-[#31344b] hover:neu-pressed'
+                        : theme === 'retro'
+                        ? 'win95-window text-black'
+                        : theme === 'cyber'
+                        ? 'border border-[#00ff41]/30 rounded-none text-[#00ff41] hover:bg-[#00ff41]/20'
+                        : 'bg-white/5 border border-white/10 rounded-full hover:bg-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] font-medium'
+                    }`}
+                  >
+                    {skill}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            
+          </div>
         </div>
-
-        {/* ================= TECH STACK ================= */}
-        {/* ================= TECHNOLOGY STACK ================= */}
-<motion.div
-  variants={fadeUp}
-  initial="hidden"
-  whileInView="show"
-  viewport={{ once: true }}
-  className="mt-32"
->
-  <h3 className="mb-16 text-center text-2xl font-semibold">
-    Technology I work with
-  </h3>
-
-  <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
-    {[
-      {
-        title: "Frontend",
-        subtitle: "Interfaces, motion & UX",
-        stack: [
-          "React",
-          "JavaScript (ES6+)",
-          "Tailwind CSS",
-          "Framer Motion",
-          "HTML5",
-          "CSS3",
-        ],
-      },
-      {
-        title: "Backend",
-        subtitle: "Logic, APIs & architecture",
-        stack: [
-          "Java",
-          "Spring Boot",
-          "REST APIs",
-          "Node.js",
-          "JWT Authentication",
-          "Validation & Security",
-        ],
-      },
-      {
-        title: "Database",
-        subtitle: "Structured & realtime data",
-        stack: [
-          "MySQL",
-          "MongoDB",
-          "Firebase Firestore",
-        ],
-      },
-      {
-        title: "Cloud & DevOps",
-        subtitle: "Deployment & delivery",
-        stack: [
-          "Vercel",
-          "Render",
-          "Docker",
-          "Git & GitHub",
-          "CI/CD Basics",
-        ],
-      },
-      {
-        title: "Tools & Ecosystem",
-        subtitle: "Daily development workflow",
-        stack: [
-          "Vite",
-          "Postman",
-          "VS Code",
-          "Linux",
-          "Browser DevTools",
-        ],
-      },
-      {
-        title: "Currently Exploring",
-        subtitle: "Learning & growth",
-        stack: [
-          "System Design",
-          "Microservices",
-          "Cloud Architecture",
-          "Scalable Backend Patterns",
-        ],
-      },
-    ].map((group, i) => (
-      <motion.div
-        key={i}
-        whileHover={{ y: -10 }}
-        transition={{ type: "spring", stiffness: 140, damping: 16 }}
-        className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
-      >
-        {/* Top gradient line */}
-        <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-cyan-400 to-blue-500" />
-
-        {/* Hover glow */}
-        <div className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
-          <div className="absolute -inset-3 rounded-3xl bg-cyan-400/20 blur-2xl" />
-        </div>
-
-        {/* Shine sweep */}
-        <div
-          className="
-            pointer-events-none absolute inset-0
-            translate-x-[-120%] skew-x-[-20deg]
-            bg-gradient-to-r from-transparent via-white/20 to-transparent
-            transition-transform duration-700
-            group-hover:translate-x-[120%]
-          "
-        />
-
-        <div className="relative">
-          <h4 className="text-lg font-semibold text-white">
-            {group.title}
-          </h4>
-          <p className="mb-6 text-sm text-white/50">
-            {group.subtitle}
-          </p>
-
-          <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-white/80">
-            {group.stack.map((item, idx) => (
-              <li
-                key={idx}
-                className="flex items-center gap-2"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-</motion.div>
 
       </div>
     </section>

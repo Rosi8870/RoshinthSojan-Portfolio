@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;600;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ================= RESET ================= */
+/* ================= RESET & BASE ================= */
 
 *,
 *::before,
@@ -12,219 +14,129 @@
   box-sizing: border-box;
 }
 
-/* ================= BASE THEME ================= */
-
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
-
-  color: white;
+  /* Sans-serif by default, serif for headings */
+  font-family: 'Inter', sans-serif;
+  color: #111111;
   overflow-x: hidden;
-
-  /* 🔥 Signature dark background */
-  background-color: #020617;
-  background-image:
-    radial-gradient(
-      1200px 600px at 10% -10%,
-      rgba(56, 189, 248, 0.08),
-      transparent 40%
-    ),
-    radial-gradient(
-      1000px 500px at 90% 10%,
-      rgba(99, 102, 241, 0.08),
-      transparent 40%
-    ),
-    radial-gradient(
-      800px 400px at 50% 100%,
-      rgba(34, 211, 238, 0.06),
-      transparent 40%
-    );
+  
+  /* Paper-like off-white background */
+  background-color: #f2efe9;
 }
 
-/* ================= NOISE OVERLAY ================= */
+/* ================= TYPOGRAPHY ================= */
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+.font-serif {
+  font-family: 'Playfair Display', serif;
 }
 
-/* ================= TAILWIND THEME VARIABLES ================= */
-
-@layer base {
-  :root {
-    --background: 222 47% 4%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 6%;
-    --card-foreground: 210 40% 98%;
-    --border: 215 27% 16%;
-    --ring: 212 100% 50%;
-    --radius: 0.75rem;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  * {
-    @apply border-border;
-  }
+h1, h2, h3, h4, h5, h6 {
+  color: #111111;
 }
 
-/* ================= SECTION LAYOUT ================= */
+/* ================= EDITORIAL UTILITIES ================= */
 
-section {
-  position: relative;
+.editorial-border {
+  border: 2px solid #111111;
+}
+
+.editorial-shadow {
+  box-shadow: 8px 8px 0px #111111;
+  transition: all 0.2s ease;
+}
+
+.editorial-shadow:hover {
+  box-shadow: 12px 12px 0px #111111;
+  transform: translate(-4px, -4px);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Hero spacing (navbar-safe) */
-section.hero {
-  padding-top: 120px;
-  padding-bottom: 80px;
-}
-
-/* Normal sections */
-section:not(.hero) {
-  padding: 120px 24px;
-}
-
-/* ================= GLASSMORPHISM ================= */
-
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-}
-
-.glass-glow {
-  box-shadow:
-    0 0 40px rgba(56, 189, 248, 0.25),
-    inset 0 0 20px rgba(255, 255, 255, 0.08);
-}
-
-/* ================= HERO ================= */
-
-.hero-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 24px;
-  text-align: center;
-}
-
-.hero-badge {
-  display: inline-block;
-  padding: 6px 14px;
-  margin-bottom: 20px;
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  backdrop-filter: blur(10px);
-}
-
-.hero-title {
-  font-size: clamp(36px, 6vw, 64px);
-  font-weight: 700;
-  line-height: 1.15;
-  margin-bottom: 20px;
-}
-
-.hero-title span {
-  color: #38bdf8;
-}
-
-.hero-subtitle {
-  font-size: 16px;
-  line-height: 1.7;
-  max-width: 620px;
-  margin: 0 auto 40px;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* ================= BUTTONS ================= */
-
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  padding: 14px 28px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  color: #020617;
-  background: linear-gradient(135deg, #7dd3fc, #38bdf8);
-  border: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
-}
-
-.btn-secondary {
-  padding: 14px 28px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  color: white;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
-}
-
-/* ================= LINKS ================= */
-
-a {
-  text-decoration: none;
-  color: inherit;
+  width: max-content;
 }
 
 /* ================= SCROLLBAR ================= */
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: #f2efe9;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
+  background: #111111;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: #ff5733;
 }
 
-/* ================= UTILITIES ================= */
+/* ================= CYBER THEME ================= */
+.crt-overlay {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+}
 
-.perspective {
-  perspective: 1200px;
+@keyframes glitch {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
+}
+.glitch-hover:hover {
+  animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+/* ================= NEUMORPHIC THEME ================= */
+.neu-flat {
+  background: #e0e5ec;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
+}
+.neu-pressed {
+  background: #e0e5ec;
+  box-shadow: inset 6px 6px 10px 0 rgba(163,177,198, 0.7), inset -6px -6px 10px 0 rgba(255,255,255, 0.8);
+}
+.neu-convex {
+  background: linear-gradient(145deg, #f0f5fd, #c9ced4);
+  box-shadow:  12px 12px 24px #bece2, -12px -12px 24px #ffffff;
+}
+
+/* ================= RETRO WIN95 THEME ================= */
+.win95-window {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  color: #000000;
+  font-family: "MS Sans Serif", "Courier New", monospace;
+}
+.win95-button {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  color: #000000;
+  cursor: pointer;
+}
+.win95-button:active, .win95-pressed {
+  border-top: 2px solid #000000;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+.win95-titlebar {
+  background: #000080;
+  color: #ffffff;
+  font-weight: bold;
 }
