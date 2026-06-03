@@ -2,115 +2,131 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function WelcomeSequence({ onDone }) {
-  const [step, setStep] = useState(0);
-  const [textVisible, setTextVisible] = useState(false);
+  const [phase, setPhase] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Small delay to let the user realize it's loaded
-    const t = setTimeout(() => setTextVisible(true), 500);
-    return () => clearTimeout(t);
-  }, [step]);
+    // Cinematic "Aura Singularity" Timeline
+    const t1 = setTimeout(() => setPhase(1), 1800); // Orbs converge to singularity
+    const t2 = setTimeout(() => setPhase(2), 2400); // Singularity explodes (hole expands)
+    const t3 = setTimeout(() => setIsVisible(false), 3800); // Cleanup phase
+    const t4 = setTimeout(() => onDone(), 4000); // Unmount
 
-  const advance = () => {
-    setTextVisible(false);
-    setTimeout(() => {
-      if (step === 1) {
-        onDone();
-      } else {
-        setStep(step + 1);
-      }
-    }, 300);
-  };
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+    };
+  }, [onDone]);
 
   return (
     <AnimatePresence>
-      <motion.div
-        className="fixed inset-0 z-[100] flex flex-col justify-center items-center"
-        initial={{ opacity: 1 }}
-        exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-        style={
-          step === 0
-            ? { backgroundColor: "white", color: "black", fontFamily: "Times New Roman, serif" }
-            : { backgroundColor: "#f3f4f6", color: "#1f2937", fontFamily: "Inter, system-ui, sans-serif" }
-        }
-      >
-        <div 
-          className="w-full transition-all duration-500"
-          style={
-            step === 0
-              ? { padding: "20px", maxWidth: "100%", textAlign: "left" }
-              : { padding: "40px", maxWidth: "600px", margin: "0 auto", backgroundColor: "white", borderRadius: "12px", boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }
-          }
-        >
-          {/* Simulated content */}
-          <h1 
-            style={
-              step === 0 
-                ? { fontSize: "2em", margin: "0.67em 0", fontWeight: "bold" } 
-                : { fontSize: "2.5rem", margin: "0 0 0.5rem 0", fontWeight: "800", color: "#111827", letterSpacing: "-0.05em" }
-            }
-          >
-            Roshinth Sojan
-          </h1>
+      {isVisible && (
+        <div className="fixed -inset-10 z-[100] pointer-events-none flex items-center justify-center overflow-hidden">
           
-          <p
-            style={
-              step === 0
-                ? { margin: "1em 0" }
-                : { fontSize: "1.125rem", color: "#4b5563", marginBottom: "2rem", lineHeight: "1.6" }
-            }
-          >
-            Full-stack engineer and interface designer.
-          </p>
-
-          <ul
-            style={
-              step === 0
-                ? { display: "block", listStyleType: "disc", marginBlockStart: "1em", marginBlockEnd: "1em", paddingInlineStart: "40px" }
-                : { display: "flex", gap: "1.5rem", listStyleType: "none", padding: 0, margin: "0 0 2rem 0" }
-            }
-          >
-            <li>
-              <a href="#" onClick={e => e.preventDefault()} style={step === 0 ? { color: "blue", textDecoration: "underline", cursor: "pointer" } : { color: "#3b82f6", textDecoration: "none", fontWeight: "600" }}>Home</a>
-            </li>
-            <li>
-              <a href="#" onClick={e => e.preventDefault()} style={step === 0 ? { color: "blue", textDecoration: "underline", cursor: "pointer" } : { color: "#3b82f6", textDecoration: "none", fontWeight: "600" }}>About</a>
-            </li>
-            <li>
-              <a href="#" onClick={e => e.preventDefault()} style={step === 0 ? { color: "blue", textDecoration: "underline", cursor: "pointer" } : { color: "#3b82f6", textDecoration: "none", fontWeight: "600" }}>Projects</a>
-            </li>
-            <li>
-              <a href="#" onClick={e => e.preventDefault()} style={step === 0 ? { color: "blue", textDecoration: "underline", cursor: "pointer" } : { color: "#3b82f6", textDecoration: "none", fontWeight: "600" }}>Contact</a>
-            </li>
-          </ul>
-
-          <hr style={step === 0 ? {} : { border: "none", borderTop: "1px solid #e5e7eb", margin: "2rem 0" }} />
-
-          <div 
-            style={{ 
-              opacity: textVisible ? 1 : 0, 
-              transition: "opacity 0.3s",
-              marginTop: step === 0 ? "2em" : "0"
+          {/* The Expanding Hole Mask (reveals the website underneath) */}
+          <motion.div
+            className="absolute rounded-full"
+            style={{
+              boxShadow: "0 0 0 5000px #030303", // Pitch black screen built out of a shadow
+              background: "transparent",
             }}
-          >
-            <p style={step === 0 ? { fontWeight: "bold" } : { color: "#6b7280", fontSize: "0.875rem", marginBottom: "1rem" }}>
-              {step === 0 ? "Warning: No CSS detected." : "System update: CSS successfully applied."}
-            </p>
+            initial={{ width: 0, height: 0 }}
+            animate={
+              phase === 2 
+                ? { width: "300vmax", height: "300vmax", opacity: 0 } 
+                : { width: 0, height: 0, opacity: 1 }
+            }
+            transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+          />
 
-            <button
-              onClick={advance}
-              style={
-                step === 0
-                  ? { backgroundColor: "#efefef", border: "1px solid #767676", color: "black", padding: "1px 6px", cursor: "pointer", fontFamily: "Arial" }
-                  : { backgroundColor: "#111827", color: "white", border: "none", padding: "0.75rem 1.5rem", borderRadius: "8px", fontWeight: "600", cursor: "pointer", boxShadow: "0 4px 6px rgba(0,0,0,0.1)", transition: "transform 0.1s" }
-              }
-            >
-              {step === 0 ? "Add CSS?" : "Add Animations & Magic?"}
-            </button>
-          </div>
+          {/* Glowing Aura Orbs */}
+          <AnimatePresence>
+            {phase < 2 && (
+              <motion.div 
+                className="absolute inset-0 flex items-center justify-center filter blur-[60px] sm:blur-[100px] mix-blend-screen"
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ duration: 0.1 }}
+              >
+                {/* Cyan Orb */}
+                <motion.div
+                  className="absolute w-64 h-64 sm:w-96 sm:h-96 bg-cyan-500 rounded-full"
+                  initial={{ x: "-50%", y: "-50%", scale: 0.8 }}
+                  animate={
+                    phase === 1 
+                      ? { x: 0, y: 0, scale: 0.1, backgroundColor: "#ffffff" }
+                      : { x: ["-50%", "-10%", "-30%"], y: ["-50%", "10%", "-20%"], scale: [0.8, 1.2, 1] }
+                  }
+                  transition={
+                    phase === 1 
+                      ? { duration: 0.6, ease: "anticipate" } 
+                      : { duration: 3, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }
+                  }
+                />
+                
+                {/* Magenta Orb */}
+                <motion.div
+                  className="absolute w-64 h-64 sm:w-96 sm:h-96 bg-fuchsia-600 rounded-full"
+                  initial={{ x: "50%", y: "40%", scale: 1 }}
+                  animate={
+                    phase === 1 
+                      ? { x: 0, y: 0, scale: 0.1, backgroundColor: "#ffffff" }
+                      : { x: ["50%", "20%", "40%"], y: ["40%", "-10%", "20%"], scale: [1, 0.8, 1.1] }
+                  }
+                  transition={
+                    phase === 1 
+                      ? { duration: 0.6, ease: "anticipate" } 
+                      : { duration: 4, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }
+                  }
+                />
+
+                {/* Violet Orb */}
+                <motion.div
+                  className="absolute w-64 h-64 sm:w-96 sm:h-96 bg-violet-600 rounded-full"
+                  initial={{ x: "10%", y: "-60%", scale: 0.9 }}
+                  animate={
+                    phase === 1 
+                      ? { x: 0, y: 0, scale: 0.1, backgroundColor: "#ffffff" }
+                      : { x: ["10%", "-20%", "10%"], y: ["-60%", "30%", "-20%"], scale: [0.9, 1.3, 0.9] }
+                  }
+                  transition={
+                    phase === 1 
+                      ? { duration: 0.6, ease: "anticipate" } 
+                      : { duration: 3.5, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }
+                  }
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* High-Tech Shockwave on Explosion */}
+          <AnimatePresence>
+            {phase === 2 && (
+              <motion.div
+                className="absolute border-[2px] sm:border-[4px] border-white rounded-full"
+                initial={{ width: 0, height: 0, opacity: 1 }}
+                animate={{ width: "200vmax", height: "200vmax", opacity: 0, borderWidth: "0px" }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+              />
+            )}
+          </AnimatePresence>
+
+          {/* Microscopic Premium Text */}
+          <AnimatePresence>
+            {phase < 2 && (
+              <motion.div
+                className="absolute bottom-12 text-white/40 font-mono text-[10px] sm:text-xs tracking-[0.5em] sm:tracking-[1em] uppercase"
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.3 }}
+              >
+                Synthesizing Experience
+              </motion.div>
+            )}
+          </AnimatePresence>
+
         </div>
-      </motion.div>
+      )}
     </AnimatePresence>
   );
 }

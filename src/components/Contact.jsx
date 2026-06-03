@@ -6,7 +6,7 @@ import { useTheme } from "../context/ThemeContext";
 export default function Contact() {
   const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
-  const email = "roshinth.sojan@gmail.com"; // Updated with actual email
+  const email = "roshinthr2004@gmail.com";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
@@ -167,8 +167,8 @@ export default function Contact() {
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                
                {[
-                 { label: "LinkedIn", url: "https://www.linkedin.com/in/roshinth-sojan-846880264/", color: "bg-[#ffcc00]" },
-                 { label: "GitHub", url: "https://github.com/Rosi8870", color: "bg-[#ff5733]" }
+                 { label: "LinkedIn", url: "https://www.linkedin.com/in/roshinth-sojan-846880264/", hoverClass: "hover:bg-[#ffcc00]" },
+                 { label: "GitHub", url: "https://github.com/Rosi8870", hoverClass: "hover:bg-[#ff5733]" }
                ].map((link, i) => (
                  <a 
                    key={i}
@@ -177,7 +177,7 @@ export default function Contact() {
                    rel="noreferrer"
                    className={`group relative p-10 flex flex-col justify-between aspect-square transition-all duration-500 overflow-hidden ${
                      theme === 'editorial'
-                       ? `editorial-border bg-white editorial-shadow hover:${link.color}`
+                       ? `editorial-border bg-white editorial-shadow ${link.hoverClass}`
                        : theme === 'zen'
                        ? 'bg-transparent border border-black/10 hover:bg-black hover:text-white'
                        : theme === 'neumorphic'

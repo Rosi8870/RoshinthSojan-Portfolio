@@ -13,6 +13,7 @@ export default function Experience() {
       date: "April 2026 - Present",
       description: "Working on cutting-edge research methodologies and data analysis to drive actionable insights.",
       logo: ondezxLogo,
+      link: "https://ondezx.com/",
     }
   ];
 
@@ -75,9 +76,14 @@ export default function Experience() {
               }`}
             >
               <div className="flex flex-col lg:w-1/3 mb-6 lg:mb-0">
-                <div className="flex items-center gap-4 mb-2">
+                <a 
+                  href={exp.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-4 mb-2 hover:opacity-80 transition-opacity w-fit"
+                >
                   {exp.logo ? (
-                    <div className={`hidden md:flex h-12 w-12 items-center justify-center overflow-hidden transition-all bg-white rounded-md p-1 ${
+                    <div className={`flex shrink-0 h-10 w-10 md:h-12 md:w-12 items-center justify-center overflow-hidden transition-all bg-white rounded-md p-1 ${
                       theme === 'editorial' ? 'editorial-border' 
                       : theme === 'neumorphic' ? 'neu-pressed' 
                       : theme === 'retro' ? 'win95-window' 
@@ -86,7 +92,7 @@ export default function Experience() {
                       <img src={exp.logo} alt={`${exp.company} logo`} className="w-full h-full object-contain mix-blend-multiply" />
                     </div>
                   ) : (
-                    <div className={`hidden md:flex h-10 w-10 items-center justify-center transition-all ${
+                    <div className={`flex shrink-0 h-10 w-10 items-center justify-center transition-all ${
                       theme === 'editorial'
                         ? 'rounded-full bg-[#111111] text-white group-hover:bg-white group-hover:text-[#3b82f6]'
                         : theme === 'zen'
@@ -105,7 +111,7 @@ export default function Experience() {
                   }`}>
                     {exp.company}
                   </h3>
-                </div>
+                </a>
                 <span className={`text-sm font-bold uppercase tracking-widest mt-4 ${
                   theme === 'editorial' ? 'text-[#111111]/60 group-hover:text-white/80' 
                   : theme === 'zen' ? 'text-black/50'

@@ -245,11 +245,11 @@ export default function Hero() {
               
               <div className="bg-white border-2 border-l-[#808080] border-t-[#808080] border-r-white border-b-white p-4 mb-8">
                 <p className="text-sm md:text-base font-bold text-black leading-relaxed">
-                  > INITIALIZING FULL-STACK ENGINEER...
+                  &gt; INITIALIZING FULL-STACK ENGINEER...
                   <br />
-                  > LOADING INTERFACE DESIGNER...
+                  &gt; LOADING INTERFACE DESIGNER...
                   <br />
-                  > STATUS: READY.
+                  &gt; STATUS: READY.
                   <br /><br />
                   I build digital experiences that bridge the gap between rigorous back-end architecture and fluid front-end interfaces.
                 </p>
