@@ -274,7 +274,7 @@ export default function Comments() {
 
                 <div className="flex items-center justify-between pt-4 mt-auto">
                    <button
-                    disabled={liked}
+                    disabled={!!liked}
                     onClick={() => likeComment(c)}
                     className={`flex items-center gap-2 text-xs uppercase tracking-widest font-bold transition-colors ${
                       liked

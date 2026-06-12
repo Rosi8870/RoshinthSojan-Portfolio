@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDownRight, Terminal, Code2, LayoutPanelLeft, Sparkles } from "lucide-react";
+import { ArrowDownRight, Terminal, Code2, LayoutPanelLeft, Sparkles, FileText } from "lucide-react";
 import { useRef } from "react";
 import { useTheme } from "../context/ThemeContext";
 
@@ -46,15 +46,28 @@ export default function Hero() {
             I build scalable web applications, bridging the gap between rigorous engineering and outstanding digital experiences in the spatial computing era.
           </p>
 
-          <motion.button 
-             whileHover={{ scale: 1.05 }}
-             whileTap={{ scale: 0.95 }}
-             onClick={() => scrollTo("projects")}
-             className="group flex items-center gap-4 px-8 py-4 rounded-full bg-white text-slate-900 font-semibold tracking-wide shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)] transition-shadow"
-          >
-             View Projects
-             <ArrowDownRight className="w-5 h-5 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
-          </motion.button>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <motion.button 
+               whileHover={{ scale: 1.05 }}
+               whileTap={{ scale: 0.95 }}
+               onClick={() => scrollTo("projects")}
+               className="group flex items-center gap-4 px-8 py-4 rounded-full bg-white text-slate-900 font-semibold tracking-wide shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)] transition-shadow"
+            >
+               View Projects
+               <ArrowDownRight className="w-5 h-5 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
+            </motion.button>
+            <motion.a
+               href="/RoshinthSojan_Resume.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
+               whileHover={{ scale: 1.05 }}
+               whileTap={{ scale: 0.95 }}
+               className="flex items-center gap-3 px-8 py-4 rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md font-semibold tracking-wide hover:bg-white/20 transition-all"
+            >
+               <FileText className="w-5 h-5" />
+               Resume
+            </motion.a>
+          </div>
         </motion.div>
 
         {/* Spatial Glass Cards Floating in Background */}
@@ -105,15 +118,28 @@ export default function Hero() {
              </p>
           </div>
 
-          <motion.button 
-             whileHover={{ scale: 1.05 }}
-             whileTap={{ scale: 0.95 }}
-             onClick={() => scrollTo("projects")}
-             className="group flex items-center gap-4 px-8 py-4 bg-[#00ff41] text-black font-bold uppercase tracking-widest hover:bg-white transition-colors"
-          >
-             Initialize_Projects()
-             <ArrowDownRight className="w-5 h-5 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
-          </motion.button>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <motion.button 
+               whileHover={{ scale: 1.05 }}
+               whileTap={{ scale: 0.95 }}
+               onClick={() => scrollTo("projects")}
+               className="group flex items-center gap-4 px-8 py-4 bg-[#00ff41] text-black font-bold uppercase tracking-widest hover:bg-white transition-colors"
+            >
+               Initialize_Projects()
+               <ArrowDownRight className="w-5 h-5 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
+            </motion.button>
+            <motion.a
+               href="/RoshinthSojan_Resume.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
+               whileHover={{ scale: 1.05 }}
+               whileTap={{ scale: 0.95 }}
+               className="flex items-center gap-3 px-8 py-4 bg-black text-[#00ff41] border border-[#00ff41] font-bold uppercase tracking-widest hover:bg-[#00ff41] hover:text-black transition-colors glitch-hover"
+            >
+               <FileText className="w-5 h-5" />
+               Download_CV()
+            </motion.a>
+          </div>
         </div>
       </section>
     );
@@ -156,9 +182,15 @@ export default function Hero() {
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 1, delay: 1 }}
           >
-             <p className="text-xs font-light text-black/50 leading-relaxed max-w-md mx-auto uppercase tracking-widest">
+             <p className="text-xs font-light text-black/50 leading-relaxed max-w-md mx-auto uppercase tracking-widest mb-10">
                Simplicity is the ultimate sophistication. Building seamless digital experiences through code.
              </p>
+             <div className="flex items-center justify-center gap-6">
+               <a href="/RoshinthSojan_Resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-black border-b border-black/20 hover:border-black transition-colors pb-1">
+                 <FileText size={12} />
+                 View Resume
+               </a>
+             </div>
           </motion.div>
         </div>
       </section>
@@ -203,16 +235,30 @@ export default function Hero() {
              </p>
           </motion.div>
 
-          <motion.button 
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ duration: 0.8, delay: 0.6 }}
-             onClick={() => scrollTo("projects")}
-             className="px-10 py-5 rounded-full neu-flat active:neu-pressed flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-[#31344b] transition-all"
-          >
-             Explore Work
-             <ArrowDownRight className="w-4 h-4" />
-          </motion.button>
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <motion.button 
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ duration: 0.8, delay: 0.6 }}
+               onClick={() => scrollTo("projects")}
+               className="px-10 py-5 rounded-full neu-flat active:neu-pressed flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-[#31344b] transition-all"
+            >
+               Explore Work
+               <ArrowDownRight className="w-4 h-4" />
+            </motion.button>
+            <motion.a 
+               href="/RoshinthSojan_Resume.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ duration: 0.8, delay: 0.7 }}
+               className="px-10 py-5 rounded-full neu-pressed flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-[#31344b] transition-all"
+            >
+               <FileText className="w-4 h-4" />
+               Resume
+            </motion.a>
+          </div>
         </div>
       </section>
     );
@@ -255,7 +301,7 @@ export default function Hero() {
                 </p>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 <button 
                   onClick={() => scrollTo("projects")}
                   className="px-6 py-2 win95-button text-sm font-bold active:win95-pressed"
@@ -268,6 +314,14 @@ export default function Hero() {
                 >
                   Details...
                 </button>
+                <a 
+                  href="/RoshinthSojan_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2 win95-window text-sm font-bold active:win95-pressed flex items-center gap-2"
+                >
+                  <FileText size={16} /> CV
+                </a>
               </div>
             </div>
           </motion.div>
@@ -320,12 +374,22 @@ export default function Hero() {
                I build scalable web applications, bridging the gap between rigorous engineering and outstanding digital experiences.
              </p>
              
-             <button 
-                onClick={() => scrollTo("projects")}
-                className="group flex items-center justify-center w-24 h-24 rounded-full bg-[#ffcc00] border-2 border-[#111111] shadow-[6px_6px_0px_#111111] hover:bg-white hover:translate-x-1 hover:translate-y-1 hover:shadow-[0px_0px_0px_#111111] transition-all"
-             >
-                <ArrowDownRight className="h-8 w-8 text-[#111111]" />
-             </button>
+             <div className="flex items-center gap-4">
+               <button 
+                  onClick={() => scrollTo("projects")}
+                  className="group flex items-center justify-center w-16 sm:w-24 h-16 sm:h-24 rounded-full bg-[#ffcc00] border-2 border-[#111111] shadow-[6px_6px_0px_#111111] hover:bg-white hover:translate-x-1 hover:translate-y-1 hover:shadow-[0px_0px_0px_#111111] transition-all"
+               >
+                  <ArrowDownRight className="h-6 sm:h-8 w-6 sm:w-8 text-[#111111]" />
+               </button>
+               <a 
+                  href="/RoshinthSojan_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center w-16 sm:w-24 h-16 sm:h-24 rounded-full bg-white border-2 border-[#111111] shadow-[6px_6px_0px_#111111] hover:bg-[#3b82f6] hover:text-white hover:translate-x-1 hover:translate-y-1 hover:shadow-[0px_0px_0px_#111111] transition-all text-[#111111]"
+               >
+                  <FileText className="h-6 sm:h-8 w-6 sm:w-8" />
+               </a>
+             </div>
           </div>
         </motion.div>
 

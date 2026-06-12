@@ -69,6 +69,7 @@ export default function About() {
                  <img
                     src={profileImg}
                     alt="Roshinth"
+                    loading="lazy"
                     className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${
                       theme === 'editorial' || theme === 'zen' ? 'mix-blend-multiply grayscale contrast-125 group-hover:grayscale-0' 
                       : theme === 'neumorphic' ? 'opacity-90 grayscale hover:grayscale-0'

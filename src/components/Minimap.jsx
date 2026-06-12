@@ -18,7 +18,7 @@ export default function Minimap() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    return smoothProgress.onChange((v) => {
+    return smoothProgress.on("change", (v) => {
       setProgress(v);
     });
   }, [smoothProgress]);

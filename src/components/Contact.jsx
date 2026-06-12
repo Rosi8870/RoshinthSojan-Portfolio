@@ -6,12 +6,45 @@ import { useTheme } from "../context/ThemeContext";
 export default function Contact() {
   const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  
   const email = "roshinthr2004@gmail.com";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "YOUR_ACCESS_KEY_HERE", // Get your free key from web3forms.com
+          ...formData
+        }),
+      });
+      const result = await response.json();
+      if (result.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    }
+    setIsSubmitting(false);
+    setTimeout(() => setSubmitStatus(null), 3000);
   };
 
   return (
@@ -224,6 +257,93 @@ export default function Contact() {
                ))}
 
              </div>
+          </div>
+        </div>
+
+        {/* Contact Form Section */}
+        <div className={`mt-24 p-8 md:p-12 transition-all duration-300 ${
+            theme === 'editorial' ? 'bg-white editorial-border editorial-shadow'
+            : theme === 'zen' ? 'bg-transparent border border-black/10'
+            : theme === 'neumorphic' ? 'neu-flat rounded-[2rem]'
+            : theme === 'retro' ? 'win95-window'
+            : 'bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl'
+          }`}>
+          <div className="flex flex-col md:flex-row gap-12">
+            <div className="md:w-1/3">
+              <h3 className={`text-3xl font-black uppercase tracking-tighter mb-4 ${theme === 'editorial' || theme === 'zen' || theme === 'neumorphic' || theme === 'retro' ? 'text-[#31344b]' : 'text-white'}`}>Send a Message</h3>
+              <p className={`text-sm leading-relaxed ${theme === 'editorial' || theme === 'zen' || theme === 'retro' ? 'text-[#111111]/70' : theme === 'neumorphic' ? 'text-[#8a96a3]' : 'text-white/60'}`}>
+                Got a question or proposal, or just want to say hello? Fill out the form and I'll get back to you as soon as possible.
+              </p>
+            </div>
+            
+            <form onSubmit={handleSubmit} className="md:w-2/3 space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${theme === 'editorial' || theme === 'zen' || theme === 'retro' ? 'text-[#111111]/70' : theme === 'neumorphic' ? 'text-[#8a96a3]' : 'text-white/60'}`}>Your Name</label>
+                  <input 
+                    type="text" 
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    className={`w-full px-4 py-3 outline-none transition-all ${
+                      theme === 'editorial' ? 'bg-[#f2efe9] text-[#111111] border-2 border-[#111111] focus:border-[#3b82f6]'
+                      : theme === 'zen' ? 'bg-transparent text-black border-b border-black/20 focus:border-black'
+                      : theme === 'neumorphic' ? 'neu-pressed rounded-xl text-[#31344b] px-6'
+                      : theme === 'retro' ? 'bg-white text-black border-2 border-[#808080] border-r-white border-b-white'
+                      : 'bg-white/5 text-white border border-white/10 rounded-xl focus:border-white/30'
+                    }`}
+                  />
+                </div>
+                <div>
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${theme === 'editorial' || theme === 'zen' || theme === 'retro' ? 'text-[#111111]/70' : theme === 'neumorphic' ? 'text-[#8a96a3]' : 'text-white/60'}`}>Your Email</label>
+                  <input 
+                    type="email" 
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className={`w-full px-4 py-3 outline-none transition-all ${
+                      theme === 'editorial' ? 'bg-[#f2efe9] text-[#111111] border-2 border-[#111111] focus:border-[#3b82f6]'
+                      : theme === 'zen' ? 'bg-transparent text-black border-b border-black/20 focus:border-black'
+                      : theme === 'neumorphic' ? 'neu-pressed rounded-xl text-[#31344b] px-6'
+                      : theme === 'retro' ? 'bg-white text-black border-2 border-[#808080] border-r-white border-b-white'
+                      : 'bg-white/5 text-white border border-white/10 rounded-xl focus:border-white/30'
+                    }`}
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${theme === 'editorial' || theme === 'zen' || theme === 'retro' ? 'text-[#111111]/70' : theme === 'neumorphic' ? 'text-[#8a96a3]' : 'text-white/60'}`}>Message</label>
+                <textarea 
+                  required
+                  rows="4"
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  className={`w-full px-4 py-3 outline-none transition-all resize-none ${
+                    theme === 'editorial' ? 'bg-[#f2efe9] text-[#111111] border-2 border-[#111111] focus:border-[#3b82f6]'
+                    : theme === 'zen' ? 'bg-transparent text-black border-b border-black/20 focus:border-black'
+                    : theme === 'neumorphic' ? 'neu-pressed rounded-xl text-[#31344b] px-6 py-4'
+                    : theme === 'retro' ? 'bg-white text-black border-2 border-[#808080] border-r-white border-b-white'
+                    : 'bg-white/5 text-white border border-white/10 rounded-xl focus:border-white/30'
+                  }`}
+                ></textarea>
+              </div>
+              
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className={`flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] transition-all ${
+                  theme === 'editorial' ? 'bg-[#111111] text-white hover:bg-[#3b82f6] disabled:opacity-50'
+                  : theme === 'zen' ? 'bg-black text-white hover:bg-black/80 disabled:opacity-50'
+                  : theme === 'neumorphic' ? 'neu-flat active:neu-pressed text-[#31344b] rounded-full disabled:opacity-50'
+                  : theme === 'retro' ? 'win95-button text-black active:win95-pressed disabled:opacity-50'
+                  : 'bg-white text-black hover:bg-white/90 rounded-full disabled:opacity-50'
+                }`}
+              >
+                {isSubmitting ? 'Sending...' : submitStatus === 'success' ? 'Sent Successfully!' : submitStatus === 'error' ? 'Error. Try Again' : 'Send Message'}
+                {!isSubmitting && submitStatus !== 'success' && <ArrowRight className="h-4 w-4" />}
+              </button>
+            </form>
           </div>
         </div>
 

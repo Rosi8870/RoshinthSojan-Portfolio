@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -16,9 +16,25 @@ import Minimap from "./components/Minimap";
 import GraffitiSecret from "./components/GraffitiSecret";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 
+import { Analytics } from '@vercel/analytics/react';
+
 function AppContent() {
   const [paused, setPaused] = useState(true);
   const { theme } = useTheme();
+
+  useEffect(() => {
+    console.log(
+      "%c👋 Welcome, fellow developer! \n\n%c It seems you've found your way to the console.\n Here are some hidden secrets to try on the site:\n\n 1. Press %cCtrl + K%c (or Cmd+K) to open the developer command palette.\n 2. Type %c'paint'%c anywhere to activate Graffiti Mode.\n 3. Type %c'sojan'%c anywhere to trigger a system override.",
+      "font-size: 24px; font-weight: bold; color: #3b82f6;",
+      "font-size: 14px; color: #888; line-height: 1.6;",
+      "font-size: 14px; font-weight: bold; color: #ffcc00; background: #222; padding: 2px 4px; border-radius: 4px;",
+      "font-size: 14px; color: #888;",
+      "font-size: 14px; font-weight: bold; color: #ff5733; background: #222; padding: 2px 4px; border-radius: 4px;",
+      "font-size: 14px; color: #888;",
+      "font-size: 14px; font-weight: bold; color: #00ff41; background: #222; padding: 2px 4px; border-radius: 4px;",
+      "font-size: 14px; color: #888;"
+    );
+  }, []);
 
   return (
     <>
@@ -74,6 +90,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <AppContent />
+      <Analytics />
     </ThemeProvider>
   );
 }

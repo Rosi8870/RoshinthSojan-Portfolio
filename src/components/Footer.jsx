@@ -28,13 +28,13 @@ export default function Footer() {
             </p>
             
             <div className="flex items-center gap-6 mt-2">
-              <a href="https://github.com/Rosi8870" target="_blank" rel="noopener noreferrer" className={`transition-all hover:-translate-y-1 ${theme === 'editorial' ? 'text-[#f2efe9]/60 hover:text-[#f2efe9]' : theme === 'zen' || theme === 'retro' ? 'text-black/60 hover:text-black' : theme === 'neumorphic' ? 'text-[#8a96a3] hover:text-[#31344b]' : 'text-white/60 hover:text-white'}`}>
+              <a href="https://github.com/Rosi8870" aria-label="GitHub" target="_blank" rel="noopener noreferrer" className={`transition-all hover:-translate-y-1 ${theme === 'editorial' ? 'text-[#f2efe9]/60 hover:text-[#f2efe9]' : theme === 'zen' || theme === 'retro' ? 'text-black/60 hover:text-black' : theme === 'neumorphic' ? 'text-[#8a96a3] hover:text-[#31344b]' : 'text-white/60 hover:text-white'}`}>
                 <Github className="w-5 h-5" />
               </a>
-              <a href="https://www.linkedin.com/in/roshinth-sojan-846880264/" target="_blank" rel="noopener noreferrer" className={`transition-all hover:-translate-y-1 ${theme === 'editorial' ? 'text-[#f2efe9]/60 hover:text-[#f2efe9]' : theme === 'zen' || theme === 'retro' ? 'text-black/60 hover:text-black' : theme === 'neumorphic' ? 'text-[#8a96a3] hover:text-[#31344b]' : 'text-white/60 hover:text-white'}`}>
+              <a href="https://www.linkedin.com/in/roshinth-sojan-846880264/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className={`transition-all hover:-translate-y-1 ${theme === 'editorial' ? 'text-[#f2efe9]/60 hover:text-[#f2efe9]' : theme === 'zen' || theme === 'retro' ? 'text-black/60 hover:text-black' : theme === 'neumorphic' ? 'text-[#8a96a3] hover:text-[#31344b]' : 'text-white/60 hover:text-white'}`}>
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="mailto:roshinthr2004@gmail.com" className={`transition-all hover:-translate-y-1 ${theme === 'editorial' ? 'text-[#f2efe9]/60 hover:text-[#f2efe9]' : theme === 'zen' || theme === 'retro' ? 'text-black/60 hover:text-black' : theme === 'neumorphic' ? 'text-[#8a96a3] hover:text-[#31344b]' : 'text-white/60 hover:text-white'}`}>
+              <a href="mailto:roshinthr2004@gmail.com" aria-label="Email Address" className={`transition-all hover:-translate-y-1 ${theme === 'editorial' ? 'text-[#f2efe9]/60 hover:text-[#f2efe9]' : theme === 'zen' || theme === 'retro' ? 'text-black/60 hover:text-black' : theme === 'neumorphic' ? 'text-[#8a96a3] hover:text-[#31344b]' : 'text-white/60 hover:text-white'}`}>
                 <Mail className="w-5 h-5" />
               </a>
             </div>
