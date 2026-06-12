@@ -4,11 +4,8 @@ import { useTheme } from "../context/ThemeContext";
 
 const projects = [
   { title: "Interactive Jobs", tech: "Jobs Platform", link: "https://interactive-jobs.vercel.app/", desc: "Useful job discovery platform for Freshers & All-Rounders" },
-  { title: "Alternate Life", tech: "Interactive Story", link: "https://alternate-life-engine.vercel.app/", desc: "A choice-driven interactive storytelling engine." },
-  { title: "Alt Text Gen", tech: "AI / Accessibility", link: "https://alttextgenerator.vercel.app/", desc: "Generating accessibility descriptions using neural networks." },
   { title: "Live TV", tech: "Streaming", link: "https://livtv-six.vercel.app/", desc: "Streaming interface inspired by modern digital TV platforms." },
   { title: "Particles", tech: "WebGL Physics", link: "https://rosi8870.github.io/Particles/", desc: "Interactive math-based particle physics playground." },
-  { title: "OTM", tech: "Audio Generation", link: "https://rosi8870.github.io/OTM/", desc: "Generates Music or Rhythms Based on User Tone." },
   { title: "REW", tech: "Corporate", link: "https://rosi8870.github.io/Roshinth-Electrical-Works/", desc: "Corporate showcase for electrical engineering services." },
   { title: "STOT", tech: "Speech To Text", link: "https://rosi8870.github.io/STOT-by-sojan/", desc: "Coverts Speech To Text Fluently." },
   { title: "E Commerce", tech: "Online Store", link: "https://ecomn.vercel.app/", desc: "E commerce platform with modern UI." },

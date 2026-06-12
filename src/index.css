@@ -64,17 +64,41 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ================= SCROLLBAR ================= */
 
+/* Hide global scrollbar since we have a custom minimap */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0px;
+  display: none;
 }
-::-webkit-scrollbar-track {
-  background: #f2efe9;
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
 }
-::-webkit-scrollbar-thumb {
-  background: #111111;
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #ff5733;
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* ================= EASTER EGG SHAKE ================= */
+@keyframes intense-shake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-5px, -5px) rotate(-1deg); }
+  20% { transform: translate(5px, -5px) rotate(1deg); }
+  30% { transform: translate(-5px, 5px) rotate(0deg); }
+  40% { transform: translate(5px, 5px) rotate(1deg); }
+  50% { transform: translate(-5px, -5px) rotate(-1deg); }
+  60% { transform: translate(5px, -5px) rotate(0deg); }
+  70% { transform: translate(-5px, 5px) rotate(1deg); }
+  80% { transform: translate(5px, 5px) rotate(-1deg); }
+  90% { transform: translate(-5px, -5px) rotate(0deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.shake-screen {
+  animation: intense-shake 0.1s ease-in-out infinite;
 }
 
 /* ================= CYBER THEME ================= */

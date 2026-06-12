@@ -170,7 +170,7 @@ export default function Navbar() {
               <Layers size={18} />
             </button>
             <button 
-              className={`transition-colors ${theme === 'editorial' || theme === 'zen' ? 'text-[#111111]' : theme === 'spatial' ? 'text-white' : 'text-[#00ff41]'}`}
+              className={`transition-colors ${theme === 'editorial' || theme === 'zen' || theme === 'retro' ? 'text-[#111111]' : theme === 'neumorphic' ? 'text-[#31344b]' : theme === 'spatial' ? 'text-white' : 'text-[#00ff41]'}`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -192,7 +192,13 @@ export default function Navbar() {
                 ? 'bg-[#f2efe9] border-b-2 border-[#111111]' 
                 : theme === 'spatial'
                   ? 'bg-slate-900/90 backdrop-blur-2xl border-b border-white/10'
-                  : 'bg-black border-b border-[#00ff41]'
+                  : theme === 'cyber'
+                    ? 'bg-black border-b border-[#00ff41]'
+                    : theme === 'zen'
+                      ? 'bg-white/90 backdrop-blur-xl border-b border-gray-200'
+                      : theme === 'neumorphic'
+                        ? 'neu-flat border-none'
+                        : 'win95-window border-b-2 border-black' // retro
             }`}
           >
             <ul className="flex flex-col py-4">
@@ -207,7 +213,13 @@ export default function Navbar() {
                         ? isActive ? "bg-[#111111]/5 text-[#3b82f6]" : "text-[#111111] hover:bg-[#111111]/5 hover:text-[#ff5733]"
                         : theme === 'spatial'
                           ? isActive ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/5 hover:text-white"
-                          : isActive ? "bg-[#00ff41]/20 text-white" : "text-[#00ff41] hover:bg-[#00ff41]/10"
+                          : theme === 'cyber'
+                            ? isActive ? "bg-[#00ff41]/20 text-white" : "text-[#00ff41] hover:bg-[#00ff41]/10"
+                            : theme === 'zen'
+                              ? isActive ? "bg-black/5 text-black" : "text-black/60 hover:bg-black/5 hover:text-black"
+                              : theme === 'neumorphic'
+                                ? isActive ? "neu-pressed text-[#31344b]" : "text-[#8a96a3] hover:neu-flat hover:text-[#31344b]"
+                                : isActive ? "win95-pressed text-black" : "text-black hover:win95-button" // retro
                     }`}
                   >
                     {theme === 'cyber' ? `> ${item.label}` : item.label}

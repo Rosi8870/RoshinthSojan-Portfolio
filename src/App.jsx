@@ -10,6 +10,10 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import SmoothScroll from "./components/SmoothScroll";
 import WelcomeSequence from "./components/WelcomeSequence";
+import CommandPalette from "./components/CommandPalette";
+import KonamiEasterEgg from "./components/KonamiEasterEgg";
+import Minimap from "./components/Minimap";
+import GraffitiSecret from "./components/GraffitiSecret";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 
 function AppContent() {
@@ -58,6 +62,10 @@ function AppContent() {
           </div>
         </div>
       </SmoothScroll>
+      <Minimap />
+      <CommandPalette />
+      <KonamiEasterEgg />
+      <GraffitiSecret />
     </>
   );
 }
