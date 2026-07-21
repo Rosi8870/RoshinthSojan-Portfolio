@@ -72,10 +72,10 @@ export default function About() {
                     alt="Roshinth"
                     loading="lazy"
                     className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${
-                      theme === 'editorial' || theme === 'zen' ? 'mix-blend-multiply grayscale contrast-125 group-hover:grayscale-0' 
-                      : theme === 'neumorphic' ? 'opacity-90 grayscale hover:grayscale-0'
-                      : theme === 'retro' ? 'mix-blend-luminosity grayscale opacity-80'
-                      : 'opacity-90'
+                      theme === 'editorial' || theme === 'zen' ? 'contrast-105 saturate-110' 
+                      : theme === 'neumorphic' ? 'opacity-90 hover:opacity-100'
+                      : theme === 'retro' ? 'opacity-90 saturate-50 hover:saturate-100'
+                      : 'opacity-90 hover:opacity-100'
                     }`}
                   />
                </div>
