@@ -6,10 +6,11 @@ export default function About() {
   const { theme } = useTheme();
   
   const skills = [
-    "React", "Next.js", "TypeScript", "Tailwind", "Motion", 
-    "Java", "Spring", "Node.js", "Express", "PostgreSQL",
-    "MongoDB", "Firebase", "SQL", "Docker", "Git",
-    "WebGL", "Three.js", "Figma", "REST APIs", "GraphQL"
+    "Java", "Spring Boot", "Machine Learning", "Data Analysis", "Automation",
+    "Python", "TensorFlow", "Scikit-Learn", "Pandas", "NumPy",
+    "React", "Next.js", "TypeScript", "Tailwind", "Microservices",
+    "SQL", "PostgreSQL", "MongoDB", "Docker", "Git",
+    "REST APIs", "GraphQL", "AWS", "CI/CD", "Selenium"
   ];
 
   return (
@@ -124,13 +125,13 @@ export default function About() {
                 : 'text-white/70 font-light'
               }`}>
                 <p>
-                  I'm Roshinth Sojan, a full-stack engineer and interface designer. 
-                  My philosophy is simple: technology should be invisible, leaving only the experience behind. 
-                  I specialize in crafting highly interactive, minimalist web applications that demand attention.
+                  I'm Roshinth Sojan, a Full-Stack Java Developer, Data Analyst, and Machine Learning Enthusiast. 
+                  My philosophy is simple: complex data and automation should seamlessly drive intuitive experiences. 
+                  I specialize in crafting intelligent backends, predictive models, and highly interactive applications that demand attention.
                 </p>
                 <p>
-                  By merging rigorous back-end architecture with fluid front-end motion, 
-                  I deliver products that aren't just usable—they are memorable.
+                  By merging rigorous backend architecture, advanced machine learning models, and automated data pipelines, 
+                  I deliver products that aren't just intelligent—they are memorable.
                 </p>
               </div>
             </motion.div>

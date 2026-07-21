@@ -35,7 +35,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-xl mb-8"
           >
             <Sparkles className="w-4 h-4 text-purple-400" />
-            <span className="text-xs font-medium tracking-widest uppercase text-white/90">Web Engineer</span>
+            <span className="text-xs font-medium tracking-widest uppercase text-white/90">Full-Stack Java & ML Engineer</span>
           </motion.div>
 
           <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-bold tracking-tight leading-[1.1] mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
@@ -43,7 +43,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-2xl mb-12">
-            I build scalable web applications, bridging the gap between rigorous engineering and outstanding digital experiences in the spatial computing era.
+            I build scalable intelligent applications, bridging the gap between rigorous back-end architecture, machine learning, and outstanding digital experiences.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -110,10 +110,10 @@ export default function Hero() {
              <div className="absolute top-0 left-0 w-full h-1 bg-[#00ff41]"></div>
              <p className="text-xs text-[#00ff41]/50 mb-4">/* SYSTEM.PROFILE.DESC */</p>
              <p className="text-sm md:text-base text-white font-medium leading-relaxed">
-               <span className="text-[#00ff41]">root@roshinth:~#</span> execute web_engineer.sh<br/><br/>
-               [+] Initializing full-stack environments...<br/>
+               <span className="text-[#00ff41]">root@roshinth:~#</span> execute fullstack_ai_engineer.sh<br/><br/>
+               [+] Initializing Java, ML, and Data pipelines...<br/>
                [+] Bridging engineering rigor & digital aesthetics...<br/>
-               <span className="text-yellow-400">[!] WARNING: Highly interactive web applications detected.</span><br/>
+               <span className="text-yellow-400">[!] WARNING: Highly intelligent data-driven applications detected.</span><br/>
                [+] Status: READY.
              </p>
           </div>
@@ -156,7 +156,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.2 }}
             className="mb-12"
           >
-            <p className="text-[9px] uppercase tracking-[0.4em] text-black/40 font-light">Digital Craftsman & Engineer</p>
+            <p className="text-[9px] uppercase tracking-[0.4em] text-black/40 font-light">Full-Stack Java & Data Architect</p>
           </motion.div>
 
           <motion.h1 
@@ -230,8 +230,8 @@ export default function Hero() {
              className="p-8 rounded-[2rem] neu-flat max-w-2xl mx-auto mb-12"
           >
              <p className="text-sm md:text-lg font-medium text-[#8a96a3] leading-relaxed">
-               I engineer digital interfaces that feel <span className="text-[#31344b] font-bold">tactile</span> and <span className="text-[#31344b] font-bold">intuitive</span>.
-               Bridging the gap between complex functionality and seamless user experience.
+               I engineer intelligent systems and digital interfaces that feel <span className="text-[#31344b] font-bold">tactile</span> and <span className="text-[#31344b] font-bold">intuitive</span>.
+               Bridging the gap between complex functionality, machine learning, and seamless user experience.
              </p>
           </motion.div>
 
@@ -291,13 +291,13 @@ export default function Hero() {
               
               <div className="bg-white border-2 border-l-[#808080] border-t-[#808080] border-r-white border-b-white p-4 mb-8">
                 <p className="text-sm md:text-base font-bold text-black leading-relaxed">
-                  &gt; INITIALIZING FULL-STACK ENGINEER...
+                  &gt; INITIALIZING FULL-STACK JAVA ENGINEER...
                   <br />
-                  &gt; LOADING INTERFACE DESIGNER...
+                  &gt; LOADING DATA ANALYTICS & ML MODELS...
                   <br />
                   &gt; STATUS: READY.
                   <br /><br />
-                  I build digital experiences that bridge the gap between rigorous back-end architecture and fluid front-end interfaces.
+                  I build intelligent backend systems, ML pipelines, and scalable enterprise applications, bridging the gap between data logic and seamless digital experiences.
                 </p>
               </div>
 
@@ -358,7 +358,7 @@ export default function Hero() {
              <div className="px-3 py-1 bg-[#3b82f6] text-white text-[10px] font-bold uppercase tracking-widest shadow-[4px_4px_0px_#111111] border-2 border-[#111111]">
                Available for work
              </div>
-             <span className="text-xs font-bold tracking-[0.2em] uppercase">Web Engineer</span>
+             <span className="text-xs font-bold tracking-[0.2em] uppercase">Full-Stack Java / ML</span>
           </div>
           
           <h1 className="text-[14vw] lg:text-[8vw] font-black uppercase leading-[0.85] m-0 tracking-tighter">
@@ -371,7 +371,7 @@ export default function Hero() {
 
           <div className="mt-12 flex flex-col sm:flex-row gap-8 items-start sm:items-center">
              <p className="max-w-sm text-base font-medium leading-relaxed text-[#111111]/80">
-               I build scalable web applications, bridging the gap between rigorous engineering and outstanding digital experiences.
+               I build scalable intelligent applications, bridging the gap between rigorous back-end architecture, machine learning, and outstanding digital experiences.
              </p>
              
              <div className="flex items-center gap-4">
@@ -393,7 +393,7 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* ================= RIGHT: WEB DEVELOPER COMPOSITION ================= */}
+        {/* ================= RIGHT: ENGINEER COMPOSITION ================= */}
         <div className="lg:col-span-5 relative h-[60vh] lg:h-full w-full flex items-center justify-center p-6 lg:p-12">
            
            {/* Terminal Window */}
@@ -478,17 +478,27 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 w-full bg-[#111111] text-white py-3 border-y-[3px] border-black overflow-hidden flex z-20">
         <div className="animate-marquee flex gap-10 items-center pr-10">
           {[...Array(6)].map((_, i) => (
-             <span key={`a-${i}`} className="text-sm font-bold uppercase tracking-[0.2em] flex items-center gap-10">
-               Creative Developer <span className="text-[#ffcc00]">✦</span>
-               Interface Design <span className="text-[#3b82f6]">✦</span>
-               Full-Stack Engineering <span className="text-[#ff5733]">✦</span>
+             <span key={`a-${i}`} className="text-sm font-bold uppercase tracking-[0.2em] flex items-center gap-10 whitespace-nowrap">
+               Full-Stack Java <span className="text-[#ffcc00] shrink-0">✦</span>
+               Data Analytics <span className="text-[#3b82f6] shrink-0">✦</span>
+               Machine Learning <span className="text-[#ff5733] shrink-0">✦</span>
+               Automation <span className="text-[#00ff41] shrink-0">✦</span>
+               Cloud Architecture <span className="text-[#ffcc00] shrink-0">✦</span>
+               Microservices <span className="text-[#3b82f6] shrink-0">✦</span>
+               Data Engineering <span className="text-[#ff5733] shrink-0">✦</span>
+               Predictive Modeling <span className="text-[#00ff41] shrink-0">✦</span>
              </span>
           ))}
           {[...Array(6)].map((_, i) => (
-             <span key={`b-${i}`} className="text-sm font-bold uppercase tracking-[0.2em] flex items-center gap-10">
-               Creative Developer <span className="text-[#ffcc00]">✦</span>
-               Interface Design <span className="text-[#3b82f6]">✦</span>
-               Full-Stack Engineering <span className="text-[#ff5733]">✦</span>
+             <span key={`b-${i}`} className="text-sm font-bold uppercase tracking-[0.2em] flex items-center gap-10 whitespace-nowrap">
+               Full-Stack Java <span className="text-[#ffcc00] shrink-0">✦</span>
+               Data Analytics <span className="text-[#3b82f6] shrink-0">✦</span>
+               Machine Learning <span className="text-[#ff5733] shrink-0">✦</span>
+               Automation <span className="text-[#00ff41] shrink-0">✦</span>
+               Cloud Architecture <span className="text-[#ffcc00] shrink-0">✦</span>
+               Microservices <span className="text-[#3b82f6] shrink-0">✦</span>
+               Data Engineering <span className="text-[#ff5733] shrink-0">✦</span>
+               Predictive Modeling <span className="text-[#00ff41] shrink-0">✦</span>
              </span>
           ))}
         </div>
